@@ -10,7 +10,7 @@ CDState is an unsupervised deconvolution method for tumor bulk RNA-sequencing da
 
 To run CDState make sure the required python packages (cdstate_requirements.txt) are installed in your environment.
 
-Use CDState_run.py file to see an exemplary pipeline.
+Use CDState_run.py file to see an example pipeline.
 
 ## Citing CDState
 If you use CDState in your work, you can cite it using
