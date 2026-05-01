@@ -6,6 +6,8 @@
 
 ![CDState overview](./images/cdstate.png)
 
+<br/>
+
 CDState is an unsupervised deconvolution method for tumor bulk RNA-sequencing data, aimed at identifying malignant cell states and their proportions.
 
 ## Installation with Conda
