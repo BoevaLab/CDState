@@ -12,8 +12,8 @@ CDState is an unsupervised deconvolution method for tumor bulk RNA-sequencing da
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/<your-user>/cdstate.git
-   cd cdstate
+   git clone https://github.com/BoevaLab/CDState.git
+   cd CDState
    ```
 
 2. Create the Conda environment:
