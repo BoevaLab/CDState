@@ -1,5 +1,5 @@
 # CDState
-### an unsupervised approach to predict malignant cell heterogeneity in tumor bulk RNA-sequencing data
+### An unsupervised approach to predict malignant cell heterogeneity in tumor bulk RNA-sequencing data
 
 [![Preprint](https://img.shields.io/badge/preprint-available-green)](https://doi.org/10.1101/2025.03.01.641017) &nbsp;
 
@@ -8,9 +8,40 @@ CDState is an unsupervised deconvolution method for tumor bulk RNA-sequencing da
 
 ## Usage
 
-To run CDState make sure the required python packages (`cdstate_requirements.txt`) are installed in your environment.
+### Installation with Conda
 
-Use `CDState_run.py` file to see an example pipeline.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/<your-user>/cdstate.git
+   cd cdstate
+   ```
+
+2. Create the Conda environment:
+   ```bash
+   conda env create -f environment.yml
+   ```
+
+3. Activate the environment:
+   ```bash
+   conda activate cdstate
+   ```
+
+4. Verify Python version:
+   ```bash
+   python --version
+   ```
+
+Expected version:
+```bash
+Python 3.10.x
+```
+
+## Updating the environment
+
+If dependencies change, run:
+```bash
+conda env update -f environment.yml --prune
+```
 
 ## Citing CDState
 If you use CDState in your work, you can cite it using
