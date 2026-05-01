@@ -12,8 +12,8 @@ CDState is an unsupervised deconvolution method for tumor bulk RNA-sequencing da
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/BoevaLab/CDState.git
-   cd CDState
+   git clone https://github.com/<your-user>/cdstate.git
+   cd cdstate
    ```
 
 2. Create the Conda environment:
@@ -42,6 +42,58 @@ If dependencies change, run:
 ```bash
 conda env update -f environment.yml --prune
 ```
+
+## Basic usage
+
+Input bulk data should have genes in rows, samples in columns
+Input purity should have a column 'purity', with samples in rows
+
+
+```python
+import CDState_base as cd
+import pandas as pd
+import copy
+import numpy as np
+
+data = pd.read_csv("data/bulkified_mixes/mixa_bulk_sum.csv", index_col=0,sep=',',header=0)
+proportions = pd.read_csv("data/bulkified_mixes/seta_bulk_sum.csv", index_col=0,sep=',',header=0)
+
+purity = proportions.loc[:,'Malignant']
+purity.rename(index="purity", inplace=True)
+purity.index = data.columns
+```
+Create CDState object:
+```python
+k = 3 # number of sources
+cn = cd.CDState(data, num_bases=k, global_round = False)
+```
+Prepare data - filter genes on sex chromosomes and keep only highly variable genes for deconvolution:
+```python
+cn.prepare_data() 
+```
+Initialize sources as random k samples after gene filtering:
+```python
+n_cols = cn.data.shape[1]
+cols = np.random.choice(n_cols, size=k, replace=False)
+initial_sources = cn.data[:, cols]
+cn.W = copy.copy(initial_sources)
+cn.W += 1e-10 # add pseudocount to avoid division by 0
+```
+
+Run Step 1:
+```python
+cn.factorize()
+```
+
+Run Step 2:
+```python
+cnG = cd.CDState(data, purity, num_bases=k, global_round = True, gene_list = cn.gene_list)
+cnG.H = copy.copy(cn.H) # start from proportions found in Step 1
+cnG.W = copy.copy(cn.W) # start from sources found in Step 1
+cnG.prepare_data()
+cnG.factorize()
+```
+
 
 ## Citing CDState
 If you use CDState in your work, you can cite it using

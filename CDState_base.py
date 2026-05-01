@@ -4,7 +4,6 @@ import logging
 import logging.config
 import scipy.sparse
 import scipy.optimize, scipy.stats 
-from cvxopt import solvers, matrix
 import time
 import copy
 import math
@@ -62,7 +61,7 @@ class CDState():
 		self.bounds = [[0., 1.]]*self._num_bases # or None instead of 1
 
 		
-	def prepare_data(self, path_genes="gene_order.csv"): #provide a path to the file with gender-related genes
+	def prepare_data(self, path_genes="data/gene_order.csv"): #provide a path to the file with gender-related genes
 		if (self.gene_list != None):
 			self.data = self.raw_data.loc[self.gene_list,:].to_numpy()
 			
@@ -343,7 +342,7 @@ class CDState():
 		start_time = time.perf_counter()
 		for i in range(1,niter+1):
 				if compute_h:
-					print("updating H first")
+					#print("updating H first")
 					self._update_h()
 
 				if compute_w: 
@@ -367,7 +366,7 @@ class CDState():
 					self.mmse[i] = self.calculate_mmse()
 					self.betas[i] = self.l2
 					self.find_malignant()
-					print("Self.mal:")
+					print("Malignant sources:")
 					print(self.mal)
 
 				if compute_err:
@@ -375,8 +374,8 @@ class CDState():
 					self.ferr[i] = multi_error[0]
 					self.err1[i] = multi_error[1]
 					self.err2[i] = multi_error[2]
-					self._logger.info('FN: %s (%s/%s)'  %(self.ferr[i], i, niter))
-					print("Error " + 'FN: %s (%s/%s)'  %(self.ferr[i], i, niter))
+					self._logger.info('Error: %s (%s/%s)'  %(self.ferr[i], i, niter))
+					#print("Error " + 'FN: %s (%s/%s)'  %(self.ferr[i], i, niter))
 				else:
 					self._logger.info('Iteration: (%s/%s)'  %(i, niter))
 
