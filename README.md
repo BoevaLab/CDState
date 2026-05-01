@@ -2,7 +2,9 @@
 ### An unsupervised approach to predict malignant cell heterogeneity in tumor bulk RNA-sequencing data
 
 [![Preprint](https://img.shields.io/badge/preprint-available-green)](https://doi.org/10.1101/2025.03.01.641017) &nbsp;
+[![Wiki](https://img.shields.io/badge/Wiki-Documentation-yellow)](https://github.com/BoevaLab/CDState/wiki)
 
+![CDState overview](./images/cdstate.png)
 
 CDState is an unsupervised deconvolution method for tumor bulk RNA-sequencing data, aimed at identifying malignant cell states and their proportions.
 
@@ -63,7 +65,7 @@ cn = cd.CDState(data, num_bases=k, global_round = False)
 ```python
 cn.prepare_data() 
 ```
-3. Initialize sources as random k samples after gene filtering:
+3. Initialize sources as random k samples from `cn.data` after gene filtering:
 ```python
 n_cols = cn.data.shape[1]
 cols = np.random.choice(n_cols, size=k, replace=False)
@@ -101,6 +103,14 @@ CDState returns following outputs:
 - `cn.gene_list` and `cnG.gene_list`: list of genes used for deconvolution
 - `cnG.mal` : column indexes of malignant (`malignant = cnG.W[:,cnG.mal]`)
 
+## Input parameters:
+CDState uses the following parameters that can be adjusted by a user:
+
+| Parameter | Description |
+|------|-------------|
+| `` |  |
+| `` |  |
+| `` |  |
 
 ## Citing CDState
 If you use CDState in your work, you can cite it using
