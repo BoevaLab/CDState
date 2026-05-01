@@ -30,13 +30,10 @@ CDState is an unsupervised deconvolution method for tumor bulk RNA-sequencing da
 
 4. Verify Python version:
    ```bash
-   python --version
+   python --version # should be Python 3.10.x
    ```
 
-Expected version:
-```bash
-Python 3.10.x
-```
+
 
 ## Basic usage
 
