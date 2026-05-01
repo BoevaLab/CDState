@@ -45,8 +45,9 @@ conda env update -f environment.yml --prune
 
 ## Basic usage
 
-Input bulk data should have genes in rows, samples in columns
-Input purity should have a column 'purity', with samples in rows
+Input bulk data should have genes in rows, samples in columns.
+
+Input purity should have a column 'purity', with samples in rows.
 
 
 ```python
@@ -67,7 +68,7 @@ Create CDState object:
 k = 3 # number of sources
 cn = cd.CDState(data, num_bases=k, global_round = False)
 ```
-Prepare data - filter genes on sex chromosomes and keep only highly variable genes for deconvolution:
+Prepare data - filter out genes from sex chromosomes and keep only highly variable genes for deconvolution:
 ```python
 cn.prepare_data() 
 ```
