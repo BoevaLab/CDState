@@ -118,6 +118,7 @@ CDState uses the following parameters that can be adjusted by a user:
 ## Tutorials
 
 Jupyter notebooks with tutorials on how to run CDState, select number of components and characterize output sources can be found in `notebooks`.
+For method overview please see our [Wiki](https://github.com/BoevaLab/CDState/wiki).
 
 ## Data
 
