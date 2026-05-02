@@ -11,7 +11,7 @@ We selected malignant cells, B cells and fibroblasts, which were bulkified based
 
 For each mix we generated 100 samples.
 
-![CDState mixes](./images/bulkified_mixes.png)
+![CDState mixes](../../images/bulkified_mixes.png)
 
 <br/>
 
