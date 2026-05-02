@@ -27,7 +27,7 @@ class CDState():
   
 	_EPS = _EPS
 
-	def __init__(self, data, purity=None, global_round = False, num_bases=4, method = None, l1=1, l2=0, lr = 0, threshold_low = 0.3, threshold_high = 0.99, gene_list=None, fixed=None, **kwargs):
+	def __init__(self, data, purity=None, global_round = False, num_bases=4, method = None, l1=1, l2=0, threshold_low = 0.3, threshold_high = 0.99, gene_list=None, **kwargs):
 
 		def setup_logging():
 				self._logger = logging.getLogger("cdstate")
@@ -437,8 +437,6 @@ class CDState():
 				W__ = np.multiply(self.W, np.divide( 2*self.l1*np.matmul(self.data, self.H.T), ((self.l1*2*np.matmul(self.W, np.matmul(self.H, self.H.T))) + self.scaler*self.l2*cosine_g))) 
 				#print("negative vals in W__:")
 				#print(np.sum(W__<0))
-				
-				#print("negative vals in lr:")
 				#print(np.sum(rate<0))
 				if (np.sum(W__==0)>0):
 					W__ += 1e-10 #add pseudocount to avoid division by 0 in self.rate calculation in next iteration

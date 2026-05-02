@@ -107,10 +107,13 @@ CDState uses the following parameters that can be adjusted by a user:
 
 | Parameter | Description |
 |------|-------------|
-| `num_bases` |Number of sources for deconvolution |
-| `l1` and `l2` | Weights used to prioritize reconstruction error and cosine similarity in Step 2 |
-| `threshold_low` and `threshold_high` | quantiles for gene filtering (keeps genes between the two values) |
-| `gene_list` | input gene list to be used for deconvolution (instead of CDState internal gene filtering) |
+| `data` | pandas data frame with bulk RNA-seq expression [genes x samples]|
+| `purity` | pandas data frame with purity values for input samples, index should be called 'purity'|
+| `num_bases` |Number of sources for deconvolution (default: 4)|
+| `global_round` | if False, CDState runs Step 1, otherwise runs Step 2 (default: False)|
+| `l1` and `l2` | Weights used to prioritize reconstruction error and cosine similarity in Step 2 (default: l1=1, l2=0)|
+| `threshold_low` and `threshold_high` | quantiles for gene filtering (keeps genes between the two values) (default: threshold_low = 0.3, threshold_high = 0.99)|
+| `gene_list` | input gene list to be used for deconvolution (instead of CDState internal gene filtering) (default: None)|
 
 ## Tutorials
 
