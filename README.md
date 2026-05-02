@@ -125,7 +125,8 @@ For method overview please see our [Wiki](https://github.com/BoevaLab/CDState/wi
 Bulkified data used for CDState benchmarking can be found in `data`:
 - `bulkified_cancer` contains five datasets: breast cancer [Wu et al.](https://doi.org/10.1038/s41588-021-00911-1), ovarian cancer [Vázquez-García et al.](https://doi.org/10.1038/s41586-022-05496-1), glioblastoma [Neftel et al.](https://doi.org/10.1016/j.cell.2019.06.024), lung cancer [Kim et al.](https://doi.org/10.1038/s41467-020-16164-1), squamous cell carcinoma [Ji et al.](https://doi.org/10.1016/j.cell.2020.05.039).
 - `bulkified_mixes` contains four simulated mixes generated using lung cancer data [Kim et al.](https://doi.org/10.1038/s41467-020-16164-1)
-For details check `README` inside the directory.
+
+For details check `README` inside the two directories.
 
 ## TCGA malignant cell states
 
