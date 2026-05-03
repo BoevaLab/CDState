@@ -3,7 +3,7 @@ To run the tutorial you need to install Jupyter Notebook in cdstate conda enviro
 `conda install -c conda-forge notebook`
 
 Then run:
-`jupyter notebook` and select `CDState_tutorial.ipynb`.
+`jupyter notebook` and select `CDState_*.ipynb` which you want to use.
 
 You will also need matplotlib:
 `python -m pip install --upgrade pip`
