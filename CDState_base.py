@@ -18,7 +18,11 @@ from jax import grad
 from joblib import Parallel, delayed
 from scipy.stats import spearmanr
 from sklearn.utils import resample
+from pathlib import Path
+import pandas as pd
 
+ROOT = Path(__file__).resolve().parent
+GENES_PATH = ROOT / "data" / "gene_order.csv"
 
 _EPS = 0.0001 #like in python decomposition.NMF
 
@@ -61,7 +65,7 @@ class CDState():
 		self.bounds = [[0., 1.]]*self._num_bases # or None instead of 1
 
 		
-	def prepare_data(self, path_genes="data/gene_order.csv"): #provide a path to the file with gender-related genes
+	def prepare_data(self, path_genes=GENES_PATH): #provide a path to the file with gender-related genes
 		if (self.gene_list != None):
 			self.data = self.raw_data.loc[self.gene_list,:].to_numpy()
 			
