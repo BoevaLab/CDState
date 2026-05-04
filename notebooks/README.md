@@ -17,5 +17,6 @@ To run CDState on your samples, you need purity values. If you do not have them 
 `conda install -c conda-forge r-base rpy2`
 
 ### Notebooks:
-`CDState_analysis.ipynb` - example of CDState run for a specific number of components, with estimation of purity and calculation of ITTH index
+`CDState_analysis.ipynb` - example of CDState run for a specific number of components, with estimation of purity and calculation of ITTH index.
+
 `CDState_end_to_end.ipynb` - example of CDState analysis, including multiple runs for a range of components, selection of the best number of components for downstream analysis and enrichment of hallmark gene sets.
