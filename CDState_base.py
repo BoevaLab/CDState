@@ -126,10 +126,13 @@ class CDState():
 		return jnp.dot(x1, x2)/(jnp.linalg.norm(x1)*jnp.linalg.norm(x2))
 
 	def calculate_cosine(self):
-		cosSim = 0
-		for pair in list(itertools.combinations(range(self._num_bases), 2)):
-			cosSim += self.jaxcosim(pair[0], pair[1])
-		return cosSim
+		pairs = list(itertools.combinations(range(self._num_bases), 2))
+		if len(pairs)==0:
+			return 0.0
+		cosSim = 0.0
+		for i,j in pairs:
+			cosSim += self.jaxcosim(i,j)
+		return cosSim/len(pairs)
 		
 	def calculate_mmse(self):
 		if len(self.mal)==1:
@@ -424,12 +427,13 @@ class CDState():
 		def calculate_jaxgrad(x):
 			jacob = np.zeros([x.shape[0], x.shape[1]])
 			pairs = [p for p in itertools.combinations(range(x.shape[1]),2)]
+			if len(pairs)==0:
+					return jacob
 			for p in pairs:
-				jacob += grad(_jaxcosim)(x, p[0], p[1])
-			return jacob
+					jacob += grad(_jaxcosim)(x, p[0], p[1])
+			return jacob/len(pairs)
 
 		if (self.l1 != 1):
-				#calculate gradient of kurtosis
 				print("Calculates gradient of Cosine(W)..")
 				cosine_g = calculate_jaxgrad(self.W)
 				print("L1 = ", self.l1)
